@@ -1,0 +1,6 @@
+{
+  "products": [
+    {"id":1,"name":"Klasik Waffle","price":145,"cat":"waffle","desc":"Tereyağı, bal","badge":"","featured":false,"img":"https://..."}
+  ],
+  "version": 1
+}

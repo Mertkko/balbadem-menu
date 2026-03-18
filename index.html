@@ -10,7 +10,7 @@
 <title>Balbadem Waffle &amp; Kumpir</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
 :root{
   --cr:#FDF6ED;--cr2:#F5E8D5;--cr3:#EDD4B8;
@@ -840,8 +840,243 @@ function togFeat(){setFeatUI(document.getElementById('pf-feat').value!=='true');
 function setFeatUI(v){document.getElementById('pf-feat').value=v?'true':'false';document.getElementById('pf-tog').classList.toggle('on',v);document.getElementById('pf-tl').textContent=v?'Evet ⭐':'Hayır';}
 
 /* ─── QR ─── */
-function mkQR(){const url=document.getElementById('qr-url').value.trim();if(!url)return toast('⚠️','URL girin');const b=document.getElementById('qrbox');b.innerHTML='';new QRCode(b,{text:url,width:200,height:200,colorDark:'#2C1A0E',colorLight:'#FDF6ED',correctLevel:QRCode.CorrectLevel.H});document.getElementById('qr-dl').classList.remove('hidden');toast('✅','QR oluşturuldu');}
-function dlQR(){setTimeout(()=>{const c=document.querySelector('#qrbox canvas');const img=document.querySelector('#qrbox img');const s=c?c.toDataURL('image/png'):(img?img.src:null);if(!s)return toast('⚠️','Önce QR oluşturun');const a=document.createElement('a');a.href=s;a.download='balbadem-qr.png';a.click();},100);}
+/* ─── QR CODE ─── */
+var _qrCanvas = null;
+var _qrUrl    = '';
+
+function mkQR(){
+  var url = (document.getElementById('qr-url').value || '').trim();
+  if(!url){ toast('⚠️','Bir URL girin'); return; }
+  _qrUrl = url;
+
+  var box = document.getElementById('qrbox');
+  box.innerHTML = '';
+
+  var canvas = document.createElement('canvas');
+  var SIZE = 240;
+  canvas.width  = SIZE;
+  canvas.height = SIZE;
+  canvas.style.cssText = 'border-radius:12px;border:8px solid #F5E8D5;display:block;';
+  box.appendChild(canvas);
+  _qrCanvas = canvas;
+
+  try {
+    var matrix = qrGenerate(url);
+    qrDraw(canvas, matrix, SIZE);
+    document.getElementById('qr-dl').classList.remove('hidden');
+    toast('✅', 'QR oluşturuldu! PNG olarak indirebilirsiniz.');
+  } catch(e) {
+    box.innerHTML = '<div style="padding:20px;color:#C0392B;font-size:13px;font-weight:700;">⚠️ ' + e.message + '</div>';
+    console.error(e);
+  }
+}
+
+function dlQR(){
+  if(!_qrCanvas){ toast('⚠️','Önce QR oluşturun'); return; }
+  var a = document.createElement('a');
+  a.href = _qrCanvas.toDataURL('image/png');
+  a.download = 'balbadem-qr.png';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+/* ══════════════════════════════════════════════
+   QR Code Generator — Pure JS, no dependencies
+   Supports byte mode, versions 1-10, mask 0
+══════════════════════════════════════════════ */
+function qrDraw(canvas, mat, sz) {
+  var n   = mat.length;
+  var ctx = canvas.getContext('2d');
+  var cel = Math.floor((sz - 8) / n);
+  var off = Math.floor((sz - cel * n) / 2);
+  ctx.fillStyle = '#FDF6ED'; ctx.fillRect(0, 0, sz, sz);
+  ctx.fillStyle = '#2C1A0E';
+  for(var r = 0; r < n; r++)
+    for(var cc = 0; cc < n; cc++)
+      if(mat[r][cc] === 1)
+        ctx.fillRect(off + cc*cel, off + r*cel, cel, cel);
+}
+
+function qrGenerate(text) {
+  /* encode as UTF-8 bytes */
+  var data = [], enc = new TextEncoder().encode(text);
+  for(var i = 0; i < enc.length; i++) data.push(enc[i]);
+
+  /* version table: [version, dataBytes, ecBytes, size] for ECC level M */
+  var VT = [
+    [1, 16, 10, 21],[2, 28, 16, 25],[3, 44, 26, 29],[4, 64, 36, 33],
+    [5, 86, 48, 37],[6,108, 64, 41],[7,124, 72, 45],[8,154, 88, 49],
+    [9,182,110, 53],[10,216,130,57]
+  ];
+  var ver = null, dataBytes, ecBytes, dim;
+  for(var i = 0; i < VT.length; i++){
+    /* need: 1 byte mode + 1 byte length + data */
+    if(data.length <= VT[i][1] - 2){
+      ver = VT[i][0]; dataBytes = VT[i][1]; ecBytes = VT[i][2]; dim = VT[i][3];
+      break;
+    }
+  }
+  if(!ver) throw new Error('URL çok uzun (max ~200 karakter)');
+
+  /* ── GF(256) ── */
+  var GF_EXP = [], GF_LOG = new Array(256).fill(0);
+  (function(){
+    var x = 1;
+    for(var i = 0; i < 256; i++){
+      GF_EXP.push(x);
+      if(i < 255) GF_LOG[x] = i;
+      x = x * 2; if(x >= 256) x ^= 285;
+    }
+    GF_EXP = GF_EXP.concat(GF_EXP); /* double for easy mod */
+  })();
+  function gfMul(a, b){
+    if(a === 0 || b === 0) return 0;
+    return GF_EXP[(GF_LOG[a] + GF_LOG[b]) % 255];
+  }
+  function gfPoly(n){
+    var p = [1];
+    for(var i = 0; i < n; i++){
+      var q = [1, GF_EXP[i]];
+      var r = new Array(p.length + 1).fill(0);
+      for(var j = 0; j < p.length; j++)
+        for(var k = 0; k < q.length; k++)
+          r[j+k] ^= gfMul(p[j], q[k]);
+      p = r;
+    }
+    return p;
+  }
+  function rsEc(msg, n){
+    var gen = gfPoly(n);
+    var rem = msg.concat(new Array(n).fill(0));
+    for(var i = 0; i < msg.length; i++){
+      var c = rem[i];
+      if(c !== 0)
+        for(var j = 0; j < gen.length; j++)
+          rem[i+j] ^= gfMul(gen[j], c);
+    }
+    return rem.slice(msg.length);
+  }
+
+  /* ── Build codewords ── */
+  var bits = [];
+  function pb(v, n){ for(var i = n-1; i >= 0; i--) bits.push((v >> i) & 1); }
+  pb(4, 4);            /* byte mode indicator */
+  pb(data.length, 8);  /* character count */
+  for(var i = 0; i < data.length; i++) pb(data[i], 8);
+  /* terminator + padding */
+  for(var i = 0; i < 4; i++) bits.push(0);
+  while(bits.length % 8) bits.push(0);
+  var cw = [];
+  for(var i = 0; i < bits.length; i += 8){
+    var b = 0; for(var j = 0; j < 8; j++) b = (b << 1) | bits[i+j]; cw.push(b);
+  }
+  var pad = [0xEC, 0x11], pi = 0;
+  while(cw.length < dataBytes) cw.push(pad[pi++ % 2]);
+  var ec  = rsEc(cw, ecBytes);
+  var all = cw.concat(ec);
+
+  /* ── Build matrix ── */
+  /* m[r][c]: 0=light, 1=dark, -1=unset */
+  var m = [], rsv = [];
+  for(var i = 0; i < dim; i++){
+    m.push(new Array(dim).fill(-1));
+    rsv.push(new Array(dim).fill(false));
+  }
+
+  function set(r, c, v){
+    if(r < 0 || r >= dim || c < 0 || c >= dim) return;
+    m[r][c] = v ? 1 : 0; rsv[r][c] = true;
+  }
+
+  /* Finder pattern 7×7 */
+  function finder(tr, tc){
+    for(var r = 0; r < 7; r++)
+      for(var c = 0; c < 7; c++)
+        set(tr+r, tc+c, (r===0||r===6||c===0||c===6||(r>=2&&r<=4&&c>=2&&c<=4)) ? 1 : 0);
+    /* separator */
+    for(var i = -1; i <= 7; i++){
+      set(tr-1, tc+i, 0); set(tr+7, tc+i, 0);
+      set(tr+i, tc-1, 0); set(tr+i, tc+7, 0);
+    }
+  }
+  finder(0, 0); finder(0, dim-7); finder(dim-7, 0);
+
+  /* Timing */
+  for(var i = 8; i < dim-8; i++){
+    set(6, i, i%2===0 ? 1:0);
+    set(i, 6, i%2===0 ? 1:0);
+  }
+
+  /* Dark module */
+  set(4*ver+9, 8, 1);
+
+  /* Alignment patterns for ver >= 2 */
+  var APT = {
+    2:[6,18],3:[6,22],4:[6,26],5:[6,30],6:[6,34],
+    7:[6,22,38],8:[6,24,42],9:[6,26,46],10:[6,28,50]
+  };
+  if(APT[ver]){
+    var pts = APT[ver];
+    for(var i = 0; i < pts.length; i++){
+      for(var j = 0; j < pts.length; j++){
+        var ar = pts[i], ac = pts[j];
+        if(rsv[ar][ac]) continue;
+        for(var dr = -2; dr <= 2; dr++)
+          for(var dc = -2; dc <= 2; dc++)
+            set(ar+dr, ac+dc, (Math.abs(dr)===2||Math.abs(dc)===2||(!dr&&!dc)) ? 1:0);
+      }
+    }
+  }
+
+  /* Reserve format info areas */
+  var FP1 = [[8,0],[8,1],[8,2],[8,3],[8,4],[8,5],[8,7],[8,8],
+             [7,8],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8]];
+  var FP2 = [[dim-1,8],[dim-2,8],[dim-3,8],[dim-4,8],[dim-5,8],[dim-6,8],[dim-7,8],
+             [8,dim-8],[8,dim-7],[8,dim-6],[8,dim-5],[8,dim-4],[8,dim-3],[8,dim-2],[8,dim-1]];
+  FP1.forEach(function(p){ if(m[p[0]][p[1]] === -1){ m[p[0]][p[1]] = 0; rsv[p[0]][p[1]] = true; }});
+  FP2.forEach(function(p){ if(m[p[0]][p[1]] === -1){ m[p[0]][p[1]] = 0; rsv[p[0]][p[1]] = true; }});
+
+  /* Place data bits — snake upward, mask 0: (r+c)%2===0 XOR bit */
+  var allBits = [];
+  all.forEach(function(b){ for(var j = 7; j >= 0; j--) allBits.push((b >> j) & 1); });
+  var bi = 0, goUp = true;
+  for(var col = dim-1; col >= 0; col -= 2){
+    if(col === 6) col = 5;
+    for(var row = 0; row < dim; row++){
+      var rr = goUp ? (dim-1-row) : row;
+      for(var dc = 0; dc < 2; dc++){
+        var cc = col - dc;
+        if(cc < 0 || cc >= dim) continue;
+        if(!rsv[rr][cc] && bi < allBits.length){
+          var bit = allBits[bi++];
+          var mask = ((rr + cc) % 2 === 0) ? 1 : 0;
+          m[rr][cc] = bit ^ mask;
+          rsv[rr][cc] = true;
+        }
+      }
+    }
+    goUp = !goUp;
+  }
+  /* fill remaining unset with 0 */
+  for(var r = 0; r < dim; r++)
+    for(var cc = 0; cc < dim; cc++)
+      if(m[r][cc] === -1) m[r][cc] = 0;
+
+  /* Format string: ECC=M(01), mask=0 */
+  var fmtData = (1 << 3) | 0; /* 01 000 */
+  var rem = fmtData;
+  for(var i = 0; i < 10; i++){
+    rem = (rem << 1) ^ ((rem >> 9) ? 0x537 : 0);
+  }
+  var fmtWord = ((fmtData << 10) | rem) ^ 0x5412;
+  for(var i = 0; i < 15; i++){
+    var bit = (fmtWord >> (14-i)) & 1;
+    var p1 = FP1[i], p2 = FP2[i];
+    m[p1[0]][p1[1]] = bit;
+    m[p2[0]][p2[1]] = bit;
+  }
+
+  return m;
+}
 
 /* ─── TOAST ─── */
 function toast(ico,msg){const t=document.getElementById('toast');document.getElementById('t-i').textContent=ico;document.getElementById('t-m').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3000);}

@@ -2,15 +2,14 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="theme-color" content="#2C1A0E">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Balbadem Waffle &amp; Kumpir</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --cr:#FDF6ED;--cr2:#F5E8D5;--cr3:#EDD4B8;
@@ -23,18 +22,15 @@
   --sh:0 2px 12px rgba(44,26,14,.08);
   --shM:0 6px 28px rgba(44,26,14,.13);
   --shL:0 12px 48px rgba(44,26,14,.16);
-  --r:16px;--rm:12px;--rs:8px;
+  --r:16px;--rm:12px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;}
 body{font-family:'Nunito',sans-serif;background:var(--cr2);color:var(--w);min-height:100dvh;-webkit-font-smoothing:antialiased;}
 img{display:block;}
 button,input,textarea,select{font-family:'Nunito',sans-serif;}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-thumb{background:var(--cr3);border-radius:4px;}
+::-webkit-scrollbar{width:4px;}..::-webkit-scrollbar-thumb{background:var(--cr3);border-radius:4px;}
 .hidden{display:none!important;}
-
-/* SHELL */
 #shell{width:100%;max-width:480px;margin:0 auto;min-height:100dvh;background:var(--cr);display:flex;flex-direction:column;}
 @media(min-width:600px){body{background:var(--cr3);}#shell{box-shadow:0 0 60px rgba(44,26,14,.12);}}
 
@@ -48,11 +44,9 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .tb-open.open{background:var(--grL);border:1px solid rgba(90,138,90,.2);}
 .tb-open.closed{background:var(--rdL);border:1px solid rgba(192,57,43,.2);}
 .tb-dot{width:6px;height:6px;border-radius:50%;animation:blink 2s infinite;}
-.tb-open.open .tb-dot{background:var(--gr);}
-.tb-open.closed .tb-dot{background:var(--rd);animation:none;}
+.tb-open.open .tb-dot{background:var(--gr);}.tb-open.closed .tb-dot{background:var(--rd);animation:none;}
 .tb-open-txt{font-size:11px;font-weight:800;}
-.tb-open.open .tb-open-txt{color:var(--gr);}
-.tb-open.closed .tb-open-txt{color:var(--rd);}
+.tb-open.open .tb-open-txt{color:var(--gr);}.tb-open.closed .tb-open-txt{color:var(--rd);}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* HERO */
@@ -71,11 +65,10 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 12px 2px;}
 .stat{background:#fff;border:1px solid var(--bd);border-radius:var(--rm);padding:9px 6px;text-align:center;box-shadow:var(--sh);}
-.stat-ico{font-size:16px;margin-bottom:1px;}
-.stat-v{font-size:12px;font-weight:800;color:var(--w);}
+.stat-ico{font-size:16px;margin-bottom:1px;}.stat-v{font-size:12px;font-weight:800;color:var(--w);}
 .stat-l{font-size:9px;color:var(--w3);font-weight:600;margin-top:1px;text-transform:uppercase;letter-spacing:.03em;}
 
-/* SECTION HEAD */
+/* SECTION */
 .sec-head{display:flex;align-items:center;justify-content:space-between;padding:16px 14px 8px;}
 .sec-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--w);}
 .sec-tag{font-size:11px;font-weight:700;color:var(--w3);background:var(--cr2);border:1px solid var(--bd);border-radius:20px;padding:3px 10px;}
@@ -90,27 +83,15 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 /* GRID */
 .grid{display:flex;flex-direction:column;gap:9px;padding:0 12px 110px;}
 
-/* ═══════════════════════════
-   PRODUCT CARD
-═══════════════════════════ */
-.pcard{
-  background:#fff;border:1px solid var(--bd);border-radius:var(--r);
-  display:flex;flex-direction:row;align-items:stretch;
-  overflow:hidden;box-shadow:var(--sh);
-  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
-  animation:rise .32s ease both;
-}
+/* PRODUCT CARD */
+.pcard{background:#fff;border:1px solid var(--bd);border-radius:var(--r);display:flex;flex-direction:row;align-items:stretch;overflow:hidden;box-shadow:var(--sh);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;animation:rise .32s ease both;}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .pcard:hover{transform:translateY(-2px);box-shadow:var(--shM);border-color:var(--acXL);}
 .pcard.feat{border-color:var(--goL);box-shadow:0 0 0 1px var(--goL),var(--shM);}
-
-/* Image side */
 .pcard-img{width:110px;min-width:110px;flex-shrink:0;position:relative;overflow:hidden;background:var(--cr3);}
 .pcard-img img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
 .pcard:hover .pcard-img img{transform:scale(1.07);}
 .pcard-img-ph{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:38px;}
-
-/* Info side */
 .pcard-info{flex:1;min-width:0;padding:11px 12px 10px;display:flex;flex-direction:column;justify-content:space-between;min-height:110px;}
 .pcard-name{font-family:'Playfair Display',serif;font-size:14.5px;font-weight:700;color:var(--w);line-height:1.3;margin-bottom:5px;}
 .pcard-blist{list-style:none;flex:1;display:flex;flex-direction:column;gap:2px;overflow:hidden;}
@@ -122,18 +103,21 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .pcard-cat{font-size:9.5px;font-weight:700;color:var(--w3);background:var(--cr2);border:1px solid var(--bd);border-radius:6px;padding:2px 7px;}
 .pcard-badge{position:absolute;top:7px;left:7px;z-index:2;background:var(--ac);color:#fff;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:2px 6px;border-radius:5px;}
 .pcard-star{position:absolute;top:6px;right:6px;z-index:2;font-size:14px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3));}
-
 .empty{padding:50px 20px;text-align:center;}
-.empty-ico{font-size:48px;margin-bottom:10px;}
-.empty-txt{font-size:14px;color:var(--w3);font-weight:600;}
+.empty-ico{font-size:48px;margin-bottom:10px;}.empty-txt{font-size:14px;color:var(--w3);font-weight:600;}
+
+/* SERVER STATUS BANNER */
+.sync-banner{display:none;align-items:center;gap:8px;background:#FFF8E1;border-bottom:1px solid #FFE082;padding:8px 14px;font-size:12px;font-weight:700;color:#F57F17;}
+.sync-banner.show{display:flex;}
+.sync-spinner{width:14px;height:14px;border:2px solid #FFE082;border-top-color:#F57F17;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* CONTACT */
 .cpage{padding:14px 12px 110px;display:flex;flex-direction:column;gap:10px;}
 .ccard{background:#fff;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);}
 .ccard-head{background:linear-gradient(135deg,var(--cr2),var(--cr3));padding:12px 15px;border-bottom:1px solid var(--bd);font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--w);display:flex;align-items:center;gap:7px;}
 .crow{display:flex;align-items:center;gap:12px;padding:13px 15px;border-bottom:1px solid rgba(44,26,14,.05);text-decoration:none;color:var(--w);transition:background .13s;}
-.crow:last-child{border-bottom:none;}
-.crow:hover{background:var(--cr2);}
+.crow:last-child{border-bottom:none;}.crow:hover{background:var(--cr2);}
 .crow-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .crow-ico.tel{background:#E8F5E9;}.crow-ico.pin{background:#FFF3E0;}.crow-ico.ig{background:#FCE4EC;}.crow-ico.cal{background:#F3E5F5;}
 .crow-lbl{font-size:10px;font-weight:800;color:var(--w3);text-transform:uppercase;letter-spacing:.05em;}
@@ -146,14 +130,10 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:50;padding:7px 11px max(10px,env(safe-area-inset-bottom));}
 .bnav-inner{background:rgba(253,246,237,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--bd);border-radius:17px;display:flex;box-shadow:0 8px 32px rgba(44,26,14,.13);}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border:none;background:transparent;cursor:pointer;border-radius:13px;color:var(--w3);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;transition:all .13s;}
-.nb.on{color:var(--ac);background:rgba(212,98,42,.08);}
-.nb:not(.on):hover{color:var(--ac);}
+.nb.on{color:var(--ac);background:rgba(212,98,42,.08);}.nb:not(.on):hover{color:var(--ac);}
 .nb-ico{font-size:20px;line-height:1;}
 .admin-ghost{position:fixed;bottom:14px;right:14px;width:30px;height:30px;background:transparent;border:none;cursor:pointer;z-index:200;opacity:0;}
-
-/* PAGES */
-.page{display:none;}
-.page.on{display:block;}
+.page{display:none;}.page.on{display:block;}
 
 /* OVERLAYS */
 .ov{display:none;position:fixed;inset:0;z-index:500;background:rgba(44,26,14,.52);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:14px;}
@@ -162,8 +142,7 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 @keyframes shIn{from{opacity:0;transform:scale(.9) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .sh-scroll{max-height:92dvh;overflow-y:auto;}
 .sh-head{background:linear-gradient(135deg,var(--cr2),var(--cr3));border-bottom:1px solid var(--bd);padding:20px;text-align:center;}
-.sh-ico{font-size:38px;margin-bottom:5px;}
-.sh-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--w);}
+.sh-ico{font-size:38px;margin-bottom:5px;}.sh-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--w);}
 .sh-sub{font-size:12px;color:var(--w3);font-weight:600;margin-top:2px;}
 .sh-body{padding:18px;}
 .fg{margin-bottom:13px;}
@@ -171,8 +150,7 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .fi,.fsel,.fta{width:100%;background:#fff;border:1.5px solid var(--bd);border-radius:var(--rm);padding:10px 12px;color:var(--w);font-size:14px;outline:none;transition:border-color .16s,box-shadow .16s;}
 .fi:focus,.fsel:focus,.fta:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(212,98,42,.11);}
 .fi::placeholder,.fta::placeholder{color:var(--w3);opacity:.6;}
-.fsel option{background:var(--cr);}
-.fta{resize:vertical;min-height:68px;}
+.fsel option{background:var(--cr);}.fta{resize:vertical;min-height:68px;}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
 .ferr{color:#C0392B;font-size:12px;margin-top:4px;display:none;font-weight:700;}
 .btn-p{width:100%;background:var(--ac);color:#fff;border:none;padding:13px;border-radius:var(--rm);font-size:14px;font-weight:800;cursor:pointer;transition:all .18s;box-shadow:0 4px 14px rgba(212,98,42,.28);margin-top:5px;}
@@ -182,17 +160,12 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .iup{border:2px dashed var(--bd);border-radius:var(--rm);padding:14px;text-align:center;cursor:pointer;transition:all .18s;}
 .iup:hover{border-color:var(--ac);background:rgba(212,98,42,.05);}
 .iprev{width:76px;height:76px;border-radius:9px;object-fit:cover;margin:0 auto 7px;display:none;}
-.iup-ico{font-size:22px;margin-bottom:3px;}
-.iup-txt{font-size:11px;color:var(--w3);font-weight:600;}
+.iup-ico{font-size:22px;margin-bottom:3px;}.iup-txt{font-size:11px;color:var(--w3);font-weight:600;}
 .tog-row{display:flex;align-items:center;gap:9px;}
 .tog{width:42px;height:23px;background:var(--bd);border-radius:12px;position:relative;cursor:pointer;transition:background .18s;flex-shrink:0;}
-.tog.on{background:var(--ac);}
-.tog::after{content:'';position:absolute;top:3px;left:3px;width:17px;height:17px;background:#fff;border-radius:50%;transition:left .18s;box-shadow:0 1px 3px rgba(0,0,0,.14);}
-.tog.on::after{left:22px;}
+.tog.on{background:var(--ac);}.tog::after{content:'';position:absolute;top:3px;left:3px;width:17px;height:17px;background:#fff;border-radius:50%;transition:left .18s;box-shadow:0 1px 3px rgba(0,0,0,.14);}.tog.on::after{left:22px;}
 
-/* ═══════════════════════════
-   ADMIN
-═══════════════════════════ */
+/* ADMIN */
 #admin{display:none;position:fixed;inset:0;z-index:300;background:var(--cr);overflow-y:auto;}
 .atop{position:sticky;top:0;z-index:10;background:rgba(253,246,237,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 15px;height:56px;box-shadow:var(--sh);}
 .abrand{display:flex;align-items:center;gap:8px;}
@@ -213,41 +186,31 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .asec-t{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--w);}
 .btn-add{display:flex;align-items:center;gap:4px;background:var(--ac);color:#fff;border:none;padding:7px 13px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;transition:all .16s;}
 .btn-add:hover{background:var(--acL);}
-
-/* Admin list item */
 .aitem{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(44,26,14,.05);transition:background .13s;cursor:grab;}
-.aitem:last-child{border-bottom:none;}
-.aitem:hover{background:var(--cr2);}
+.aitem:last-child{border-bottom:none;}.aitem:hover{background:var(--cr2);}
 .aitem.dragging{opacity:.5;background:var(--cr3);cursor:grabbing;}
-.aitem-drag{font-size:16px;color:var(--cr3);cursor:grab;flex-shrink:0;padding:0 2px;}
+.aitem.drag-over{border-top:2.5px solid var(--ac);}
+.aitem-drag{font-size:16px;color:var(--cr3);cursor:grab;flex-shrink:0;}
 .aitem-img{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--cr3);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;border:1px solid var(--bd);}
 .aitem-img img{width:100%;height:100%;object-fit:cover;}
-.aitem-n{font-weight:800;font-size:12.5px;color:var(--w);}
-.aitem-s{font-size:10px;color:var(--w3);font-weight:600;margin-top:1px;}
+.aitem-n{font-weight:800;font-size:12.5px;color:var(--w);}.aitem-s{font-size:10px;color:var(--w3);font-weight:600;margin-top:1px;}
 .aitem-p{font-size:13.5px;font-weight:800;color:var(--ac);flex-shrink:0;}
 .aacts{display:flex;gap:4px;flex-shrink:0;}
 .ibtn{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--bd);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .16s;}
-.ibtn.e:hover{border-color:var(--ac);background:rgba(212,98,42,.08);}
-.ibtn.d:hover{border-color:#C0392B;background:rgba(192,57,43,.07);}
+.ibtn.e:hover{border-color:var(--ac);background:rgba(212,98,42,.08);}.ibtn.d:hover{border-color:#C0392B;background:rgba(192,57,43,.07);}
 
-/* SAVE / CANCEL BAR */
-.save-bar{
-  position:sticky;bottom:0;z-index:20;
-  background:rgba(253,246,237,.97);backdrop-filter:blur(12px);
-  border-top:2px solid var(--ac);
-  padding:12px 16px;
-  display:none;
-  align-items:center;justify-content:space-between;gap:10px;
-}
+/* SAVE BAR */
+.save-bar{position:sticky;bottom:0;z-index:20;background:rgba(253,246,237,.97);backdrop-filter:blur(12px);border-top:2px solid var(--ac);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:10px;}
 .save-bar.visible{display:flex;}
 .save-bar-txt{font-size:12px;font-weight:700;color:var(--w2);flex:1;}
 .save-bar-btns{display:flex;gap:8px;flex-shrink:0;}
 .btn-save{background:var(--ac);color:#fff;border:none;padding:10px 20px;border-radius:var(--rm);font-size:13px;font-weight:800;cursor:pointer;transition:all .18s;box-shadow:0 3px 12px rgba(212,98,42,.28);}
 .btn-save:hover{background:var(--acL);}
+.btn-save:disabled{background:var(--w3);cursor:not-allowed;box-shadow:none;}
 .btn-cancel{background:transparent;color:var(--w3);border:1.5px solid var(--bd);padding:10px 16px;border-radius:var(--rm);font-size:13px;font-weight:700;cursor:pointer;transition:all .18s;}
 .btn-cancel:hover{border-color:var(--rd);color:var(--rd);}
 
-/* Profile */
+/* PROFILE */
 .prof-sec{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh);}
 .prof-t{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--w);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
 .prof-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:10px;background:var(--cr2);border-radius:var(--rm);}
@@ -273,9 +236,6 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 .toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(4px);background:var(--w);color:#fff;border-radius:30px;padding:10px 18px;font-size:13px;font-weight:700;z-index:1000;display:flex;align-items:center;gap:7px;box-shadow:0 6px 22px rgba(44,26,14,.28);opacity:0;transition:opacity .22s,transform .22s;pointer-events:none;white-space:nowrap;}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* drag-over highlight */
-.aitem.drag-over{border-top:2px solid var(--ac);}
-
 @media(max-width:360px){
   .pcard-img{width:95px;min-width:95px;}
   .astats{grid-template-columns:1fr 1fr;}
@@ -286,6 +246,12 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 </head>
 <body>
 <div id="shell">
+
+<!-- Sync banner -->
+<div class="sync-banner" id="sync-banner">
+  <div class="sync-spinner"></div>
+  <span id="sync-txt">Sunucudan yükleniyor...</span>
+</div>
 
 <!-- TOPBAR -->
 <header class="topbar">
@@ -341,7 +307,7 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
     <div class="ccard">
       <div class="ccard-head">📞 İletişim</div>
       <a class="crow" href="tel:05453820685"><div class="crow-ico tel">📞</div><div><div class="crow-lbl">Telefon</div><div class="crow-val">0545 382 06 85</div></div></a>
-      <a class="crow" href="https://www.google.com/maps/place/Balbadem+Waffle+%26+Kumpir/@40.9980756,28.7106488,17z/data=!4m15!1m8!3m7!1s0x14caa1ac9cabd769:0x283e3716793548be!2sBalbadem+Waffle+%26+Kumpir!8m2!3d40.9981192!4d28.7106914!10e5!16s%2Fg%2F11l6_9zgc0!3m5!1s0x14caa1ac9cabd769:0x283e3716793548be!8m2!3d40.9981192!4d28.7106914!16s%2Fg%2F11l6_9zgc0?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+      <a class="crow" href="https://www.google.com/maps/place/Üniversite,+İstiklal+Cd.+No:18%2FA,+34320+Avcılar%2Fİstanbul" target="_blank">
         <div class="crow-ico pin">📍</div>
         <div><div class="crow-lbl">Adres</div><div class="crow-val">Üniversite Mh. İstiklal Cd. No 18/A</div><div class="crow-sub">Avcılar, İstanbul 34320</div></div>
       </a>
@@ -352,7 +318,7 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
       <div class="crow" style="cursor:default"><div class="crow-ico cal">📅</div><div><div class="crow-lbl">Hafta İçi</div><div class="crow-val">10:00 — 22:00</div></div></div>
       <div class="crow" style="cursor:default;border-bottom:none"><div class="crow-ico cal">📅</div><div><div class="crow-lbl">Hafta Sonu</div><div class="crow-val">10:00 — 23:00</div></div></div>
     </div>
-    <a class="map-link" href="https://www.google.com/maps/place/Balbadem+Waffle+%26+Kumpir/@40.9980756,28.7106488,17z/data=!4m15!1m8!3m7!1s0x14caa1ac9cabd769:0x283e3716793548be!2sBalbadem+Waffle+%26+Kumpir!8m2!3d40.9981192!4d28.7106914!10e5!16s%2Fg%2F11l6_9zgc0!3m5!1s0x14caa1ac9cabd769:0x283e3716793548be!8m2!3d40.9981192!4d28.7106914!16s%2Fg%2F11l6_9zgc0?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">🗺️ Google Maps'te Görüntüle</a>
+    <a class="map-link" href="https://www.google.com/maps/place/Üniversite,+İstiklal+Cd.+No:18%2FA,+34320+Avcılar%2Fİstanbul" target="_blank">🗺️ Google Maps'te Görüntüle</a>
   </div>
 </div>
 
@@ -367,7 +333,7 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 </nav>
 <button class="admin-ghost" onclick="openLogin()" aria-hidden="true"></button>
 
-</div><!-- /shell -->
+</div>
 
 <!-- LOGIN -->
 <div class="ov" id="ov-lg">
@@ -376,8 +342,7 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
     <div class="sh-body">
       <div class="fg"><label class="fl">Kullanıcı Adı</label><input type="text" class="fi" id="lu" placeholder="kullanıcı adı" autocomplete="username"></div>
       <div class="fg"><label class="fl">Şifre</label><input type="password" class="fi" id="lp" placeholder="••••••••" autocomplete="current-password">
-        <div class="ferr" id="lerr">Kullanıcı adı veya şifre hatalı.</div>
-      </div>
+        <div class="ferr" id="lerr">Kullanıcı adı veya şifre hatalı.</div></div>
       <button class="btn-p" onclick="doLogin()">Giriş Yap</button>
       <div style="text-align:center;margin-top:9px"><button class="btn-g" onclick="closeLogin()">İptal</button></div>
     </div>
@@ -404,11 +369,8 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
           <div class="fg"><label class="fl">Fiyat (₺) *</label><input type="number" class="fi" id="pf-p" placeholder="145" min="1"></div>
           <div class="fg"><label class="fl">Kategori</label>
             <select class="fsel" id="pf-c">
-              <option value="waffle">🧇 Waffle</option>
-              <option value="kumpir">🥔 Kumpir</option>
-              <option value="tatli">🍫 Tatlı</option>
-              <option value="icecek">🥤 İçecek</option>
-              <option value="ozel">✨ Özel</option>
+              <option value="waffle">🧇 Waffle</option><option value="kumpir">🥔 Kumpir</option>
+              <option value="tatli">🍫 Tatlı</option><option value="icecek">🥤 İçecek</option><option value="ozel">✨ Özel</option>
             </select>
           </div>
         </div>
@@ -433,22 +395,20 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
     <div class="abrand">
       <img class="alogo" id="alogo" src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACWAJYDASIAAhEBAxEB/8QAHAAAAQQDAQAAAAAAAAAAAAAAAAIFBgcDBAgB/8QAVBAAAAUCAgUGBg0KBAMJAAAAAQIDBAUABhESBxMhIjEUIzJBQlEVUmFxodIIFyQzU1dicoGRlJWiFjRDRFRjgpKxwSVWc9E1dIRVZGWDhZOy0/D/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAoEQEAAgECBAUFAQAAAAAAAAAAAQIREiEDMUFREyIyYXEEFCNigUL/2gAMAwEAAhEDEQA/AOlPai0W/Fzaf3Sj6tHtRaLfi5tP7pR9WpomQqZMhK9UIQ4b1AQr2otFvxc2n90o+rR7UWi34ubT+6UfVqb0jIXWZ+1hQEK9qPRZ8XVp/dKPq177Umi34urT+6UfVp+um5IW2Iw0hNv0miPZzDvHHuKUNph81c+3xp5lnusZWo28GNP2pbeWN5g4F9I1M2wqtJstaT0caGYtDlEnZFksk/GXjW5A9Jag0099jdG9CzrYfm/7nApKfiygHpqjHTmZuKS90LPZZ6p42ZZT6A21MIPQ9f8ALb/gbkSfjPFgS/DtN6KjW18KI5yenl3aES/mmheFX/1I9qn/AGGtUt46H/iPtv7K3/8Arp7Y+x2uFQPdtwRqP+mmc/8AtW6f2OLvs3Whm/5MfWo8xfjNMbdOgRb8+0RRDT/0dsr/ALVMoFt7HGaHK3tmy0VPg3USkiP4ygFQyR9j5djcMWMnFO/k5jpD6QEKhFx6OrzgiGNIW+61Jf0qPPE+suNGqT0Unq6bR0T6KFiaxLR7aCiZu0WJQEP/AI1l9qPRb8XNp/dKPq1ylat43Na6+eElnDYvwObMkPnIbEKvHR5p3jHyxWl1tyRzk+BeWpYiif5wcSefaFVF024UwnntRaLfi5tP7pR9Wj2otFvxc2n90o+rUvbLt3TcqzdUi6Jy5iqJmASmAe4Q2DWZMhUyZS9EKtkhXtRaLfi5tP7pR9Wj2otFvxc2n90o+rU0OQpsubqpdAQj2otFnxdWn90oerRU0AhCnMfrNxooAIfOHREvnoUNl7Oal0UB5Vd6W9J0dZDbkiRCvZhYmZJtm2EAe0p3B5OI+msumXSC3seC5nKtLOyiVoj3d5zfJD0js765TbITd23IKaQryMq+V84nMPERHqAPqAKi9scmtKZ3nkXPzU9d87yuQcOH71U2RFMpej3FIQOAeQKtjRxoIdvtVI3gqZmhh+YIjzpvnm7PmDbViaMdHcHo+ivCsms3WlNXz7xTooh4qfcHl4jUjTVlrjH3OK0RE/C8HLkPk/Bl8vHzVGDm/bkwMErPspMsfDRyKbk36szR1jg/zuv6TDW9yy53n5pEtY5P4R6tnN/IT1qcomHj4lDVMGpEc3TNxMfymMO0w+ca36vSzyj3g25Fj87cmp/5diQC/jEw0rwJM/5skPs6Pq0/5gCmiNuWBknx2TCUauXCeOZNM+3Zxw7/AKKWmBu1CtLqRTzt5hk7/dvGer/EQf7V4pOScf8A8YgVtWHSXYn15POJdhw+oakde09PuNSvrgsaw7+aGdlboa8364y5tUo/K/2MFUDpK0T3DZ+sdpE8IxJf1lEu0gfvC9Xn4V1HLW40dri9amPHSHZdtt038QcDh5DBWo0mXLR0WJuZFJI6u4g6J7w58m3oH+SPHqqZ/ZdbdnL+jDSVN2Q7IkQ/LYkxudZKG9KY9k3oHrrq60bjibqhUZWHcAsgpxDtJm6ymDqEKpPTboeKmRe47RbfvHcen6TpB/Uv1VVmjS9ZOyLgK9ac40U3XbbqWL/YwdQ0ROlU1i+8O1VD5cu7mzVkprtyZj7ghm0tGOAXaOSZiG6/KAh1CA7BCnStWDGU+Y5iZTBl6++islFAITAxSb5s1Nt0SzSBgXcw+V1LZoQVVB6xw7IeUR2B56ciHKYN0ca579lXdeZ00tBorup4OnvnH3sv9TfVStOFVrmcKhvG4ZO8Locyz3eWcqZUUS7cheBCF/8A20a6V0N2I0sK2zS0tqiyi6WsdrG/QF45AHydfeNVl7GGzCS08pc75HM0jTZW3cdfv/hD0iFXm+xn7h8G4f4dHiU7n98vxIT5pekPlwrKO7W8/wCQxZrXC7SlpVEybJM2diyU9CqgeN3F6vPUmRKYpMDnzD30oKCGKYMxdtaVrhjLxQDGDdPlqLaSblWte3uWt0SLOFVQST1nRKIgI4j9AcKlKhyE2mMBaY7kjom6IlaJcLpKAbaUyagCdIwcDB5qjiTOmYrO50xmM8lfW7fEhc8LNRL3VJv+QKnQMju58A3gw76g2jVNVS+ofk58vP5v4QARN6K2jMJCxr2act6KSwc4XorIjum9A7QrYZs/ydf3S7/YkzNWxvlLGwL+DEa8zVe2NXOHo4rGdPKT5LaWZNGaMRi3aqMEVBLzmOZYA68eryVb7VbljRs6TzEKqmVT6BDHCqM0Y2ItOrpycmTVxSfV+0YdXze8avRF0y1nJ0nDfNwyFUDH6q7PprcSc2u5fqIpGIrDbrTfMG75us0epEXbKlymSMXZW5SAOQymXtBXZhzIxHrO4F+nDSK5l2S45Y92p0ij8CoPjeKbr4capP2RejksSqN3Q6PuRdT3ckX9Gc3bD5I9fl89dDTLBtKRyzJ0HNKF49ZRDaBgHqEB240zQ4kmYV/b06QjhZEOTOu5dMwbin8QenGsvZpW3Vz37Hi+lbfuUsC+cZYmQV7X6FYdhR8w9EfoGurA4Vw7f9uOLSu97CK5+YUzIKeOkO0hvq9IV1ToSusbssJo8cHzPW3uZ388va+kMBp0noriV6puUDAcw5s2PZ7qK9IcpjCUOzRWjF5ulCub7x0N35cV0yU2q5h/da5lC+6j7peyHQ6gwq8Cw892rsdfZUfVrw8PPf5rdB/0qPq1nO/RpXblJutmMR0faM0GWBFF2iGKmX9M4N/uYcPNT/bEb4LiUWyg5nA4nXP46hhzHH6xpv8AyeeuF2wyM+6epN1yraoyKZQMYvRxyhjx21IQMfWYZN3xqdUSy15hhRSUxOKe/umqyNF3Q55233MaR2ZoKxQ50u3DAcfJsGoE10PJI7/5Quk1vGRRAv8AfGrUUMYA3SZqVWV+FW85ldeJasYhWr6zrgFiaPkHyVxR3irc06S+Umpt2+Qdg15IWqZ0wjkuT8vU3TuEvegWOmTInrR7JQDiG0RHhVkFE2sMGXd76Wap8CivFsrpzY1wTBMJW6eTI9lowRyokDu4hWg10RFZyTd22uBwXUqAp7zvbB6hAatFMTiTE5cpqDicMuUubvo+3oXjWLLXmAY5qVWMonzmxLu9Vbsy+qo1cgeC5eOnibqWYGbv/SOO4b+E+H0GGpII4BWjKsCSkS4j3W6RwmJDZerHrDygO2ptGYOs4Vtp30avb2UjX0Mdom/bZkleUKCUDpcQ4APA39awaCrCuyx5KQCWWj1GDtEu63WMYQVKOwcBKHUI1O/As8XLlux19lR9Wl+Bp7/Njr7Kj6tT/F52xlIQCio74Hnv82OvsqPq0U9U9k6fdI60Jxu4dRLhu0fKsHB0xKm5TKBjJD3gBtg/TW4mUCBlCsL8yJGih3CpUkyhiYxjZQDzjVpU7ZCN+TlipXT7YLpBbKsfUKsUTI82Ywbw8cBy1PrEunw5o5ZXTIJFbZmxlV8OjuZswh8kcuIVUFk2rZchoo8ITdwumSxk3GsL4UykJgc2HN44fRhtp1kpt2+0J29BuVUGUtcGqYAOxLI3zjzuTsgJC1DSx00aXTdCt1xwXG+1rC5WSzuOR1ZS8nMRQRAn0p7afNOLqejYZhIQk84i/dqLU5U0SH1mtOBcd7u6qi2kS37pgLejrhd3KyfJ20uku2bpsSoboYEMUDZvF7NPemWUjHmj6JctHqCiK8qyVT54OGtKI/V191BdVkxiKzWObt3Ls7tZJMpFFzFABUMAbTCAbAx47Kq90hd0hpXlrfbXw/j2iTMj5LVtUjZM5xLq9ocA76l133pCQcSV8LpF6PKUkgSbuCZ8Tny9/V11BLgi4K4NN8mjKSirZFvDobyD/k+/rDbomKPopyK9UmsCamyXnOWdNyJJVSNRRcJPiogmYxT9lQpdmYKj2ku6rmb3JKO7fe6uLtdJspJI5SjygVD4nL9CdY9G7uKta77xbsJDldvtEEnCj1VQDm5RhvJ63t7KwWFbN0z9oPZVG6GbRC5VFnLtsaPKuPObuUT5vF6uqka2ZDWy1vq+C5E7M7ltmQdplAwp5gxKYAHYNVhYDXSFcVoI3A3v5UjpQ6xStnDFIyO4oYm8IbduWnjQpNJ/kUvAyD5vy2CVWZrc6HvZOgf5uXrrU0Nz0DF6KGi0nMMmhEl3J1NY4KA+/KdXGguRyY3FJ3NYU17oNA3BEmUQe6nA+qVTDNu5uyYOFR6AjdIMzo7bXM0v6UM9cseUpMuRoYCfDdJmw6xrcssiqtt3zeLtLkTeeUUValW3R1JUhIQw/Ops0Ys7Rt/R9FXc4kXRn7WO5Qo28I/JHEoJCbDzBQZekN1pBZsrSCPn12snIIcmXa6lMfdBUjHE2OHEej3VZVkT6VwWXHTwiCfKGwHVx7Bg2H+oQGoTe80ykZnRrJgrqE13/KcqxigYhDIGwzUyy6ri3lrh0dx/NKz7xM8P8hJz+cfyZTj9NAZrAuC7rm0mFVVm1W0KugrItWWpJvtyq6ohRHjt6WNXVVWxacbH6cGkY0XSKi0tgrZFPWB2Vuj87Dqq0i06puKKSUmU5jd9FUkJnzkzVrSrVm+YKNJBuRw2XLkURULmA4D1CFY51q7eRDtsyeqsnKiYgkunhiQ3UO0BDjx8lVwtPXDJWDbrGHk1ErgkNaC66hSiYhkCmFbqw6ZSl4dqlMnEJaTR7ZBDlOFqRGYvXyUtbUva1sy75NaThGTtwkmBE1FkQHKUB2AHmqNLTr24z2X4Jk3DLwgmZ491OX3khAzgbMA/pMC/XWpdV4O2V850phuhFxbls0etBUJitrump43N5kuHyqR7p/NRMZMMOQyrFu7aZgNqli5i4hw2eSmobLs5xHIMz23GmaICYyKRm4ZSCbpYB5cNtR/SHJKx95Q7dxcUrFsHTRfWcjR1mJyCTL+jMPaGmuZdy0OvbhJO85TkL9V1z7dvzh08udHEurEc2Gwd2gYS4LAsZuomqS1oopymDKYrUONZn1iWc+drO3dtxa7hY4nUUUbgInMPERqMf463dW0H5VPnbWQlVBTPqylMo21WchT5iBvYk7g6VPGld67joOPdNpV3Gk8JN0l1G5QMOqUPlNsym4BwwCgf07Fte2fBJoLwIw8HZgPybk4avN34d9b0NERcMw5DEsW7JtmE+qRTylxHiOHlpkshJ9rHb38oHcvEuCJ8k5UnkVIYM2sx3C8dmGyopF3S8G9126sup7kduBfkUyAyTZk6JiH46wByY7R25saCTJnZVooJuRb25Go8rSFJf3OAaxMw4iU3kEaxpWNZbRdNdG14giubdNyUo1i0qOnzOxnshHSK7JdDVnKsjl6zlKPSAdmA1igXEhcbhpJspJw2hW2ZMnR1r8wbomU2bhQENgbBEeOHCgJJKRkdLRxo+RZoO2imGZJQuJRw2hspg9rywzHyfkpEfZQpmgnUwvovmnq02+UeJGe6pzuZyak5wJhu4djbspndzdwxU7bz4Zt04jvBKDySQWKTaU5ykOfYAcNZm/hoOE9krNtR9qOXW/HuOTIgkjrEQHImHAoeQKcTxsY4ftZM7FAztsUSoKmT30wNxAB6sag96zEwtfURGRUkqzYoO0G74Uil506oHOBN4B4ET/HTZcMxLt7quRm3uCc5W21KsW0bswXTOc6ebIbm+jm7zBsoJPBte2STnhnwIy8JmV1nKdSGsz+Nm76fgqCxSsw4vl8xeybpAngZBfkyYkyIrKZyny7MdmTZUXsW5ZZ46txFK4ZKRfu1DeEGrpuUqWpDNmOQ+Qu0N3gI08nhcJT5jmL3UUuimljTzZN/pVEYOzfBl4SE6WQ1iC+s5M21P5uKhimWHHHbmEndTiWz7e/Z3H25b168NZ9vF/V3H25b16jfsrY3WpZYwEzKSJJHXAvmIxSMlsaJmUMoYvHexObycK02tgZrblo+TcRr1/ImXPy/wfvkMr19IR3erAwdVN6kxolTUyHn2pTF/wDEl/Wp5ZRELIRSczaMhz3TbLldqKpHy9kwGMO6PAaQZGNtTqc1BybueaufBrNRqt7jEouM2G9jnHKO6Xv663JiDkn10wkwlIt0U43WZ0eTiYVdYGU29mDLs4bB204W7LJSzQ24Ld0gbI5bKdJE/d5u4esKdAHHhVwSM3jAy0s/iHkZJtWRo1cy/PNRWzmEgk6jl2YGGmiQtG6X+ZVxdLUy/L27xP8Aw8+qS1PRKUms2YjtHbU+MOFe0hlHrci51rJPXs3OJP8AXkSKkii3MimjlzYiBRObabHb5qjL/Rw5fNE4laaL4KaLncssrMvKUjmMJ8BUEcDExHaGXeDYNWNjXtAyjV3QMhPWgaF8JoIOFcmucmbZwNlEDDgTMGGIh37KxI27IM7hTlY2RbtU3O2Uag3HVuVPhCb3Nn7x249dSgBxoEcKoIQ6s2VAZCNYTxG0HIqnVcNuS5lk9Z74VNTNgBTDjxKOGOytp3aSrm5OVndt/BQxZowWXJxzaof3mbv8nCpfXmNSEBRsaTQYRKCM8kq4ZyHL3K7hnnO5OBchO0GXAm7109QUFIR90zUy4kEFkZLV8wm3EopasMpd7MObZx2BXk69cSDw1vxKuqU/XXJf1ZMeoP3huru400TyGj639SjNyBGRlS83rpJbE4B/FU5UczQMqW8n88hKNdW5ZFapoGaCOTLmEphNm3t4xsQwDZTdG2U/aQNvsgmUOWwjvWpOeSbDpDmA6YlzdYG4492ysEGfRrOPuQxMmk9c5RNq0ZBcRwD+KpB+R1vfsi/2xb16CPxc2sNmwy9VFMP5H29+zuPty3r0U8yNu5/IQhA3Qy16oQhw3q8TExi75ctBxy9EmarS5y9kho6UZu1bxh0fcy3/ABBIv6M/wnzR6+4dtRLQtpGWsmW5O9zrQrs3Pk60R+EL/cOvz11u4RRcN1EVkiKJKFEpyGLiBgHiAhXL2mnRO7txdebgW5l4U2+omXadpj/Unl6uus7R1bUtnyy6AeM0ZVNvcdtvW/KzJc0vxRcpeIphxDuHiFbMDON3Sho9w3OwkUvfGinH5xB4HL5Q+muVNF2kqbshwCSXu2JObnWShvxEHsm9A9ddI27cNo6R4kh2ixFVk97UmNq3LY3fs2h84NlL4TauOaamIQ4b29S6i2W5ofYl/jzLuUMCTon8XRP6BrOjd0PrNS+VVi1/g3yIpfiHdH6BqtXdGnsf8hc+fLvUutNq/aOtrdw3WT8dNYpgH6hrZMbL2qrJYepkKmTKTYFeHKU3S6qb3k5EsU872RatvkqLFx/rTaa6eVDkhIx7KG+EKTVI/wDuHwD6gGlN4g4rKRmNlqLuJZzMOFGVubADcXkuKSfkT+EP6A66UELIS2B7jd8x/wBntMSo/wAZukp6A8lRLSHpbtyzUDRUMRJ/IpbhG6GGpR+eYvd4obamZz7KiOx8uy4Lf0a2qKrgc6imOqSzYrO1usRH+puquT7kmZa7rlUkH3Pu3KgJoop9nxSEDu7q9npmevC4eVyCqr9+ubIimUv1EIUOAeSuhtBuiklsgSfuBIiswYvMpcStAH+px6x6uAVPq+Gvo36nrQho/JZtva58Upph7gdyb4MOymHm6+8asgaxmHDLuZv7VkrRhM5IIQpTGMHSNxooKJhOYMuGHa76Koi6KQQuUOkJvPQoXN2stALpChAOGQ4ZijS6RkHPmzD5uqgKS0paDmkmotK2jqmTs28oyNsRUH5A9gfJw81UG+ZT1pzOR2k9iZFL3viQ3nKYOP0V3XTVNQMTNseQzLBu/Q8VZPHDzDxAfKGFRNWteLjm5xtDT1c8WRJvNtUJhEvb96W/mDYP0hVnQunCw5YgJSB3Edj0iOkMxP5i4hTJdXse4l0cy1vSy7A3wDguuT/m2GD01W81oSv+N96Yt5JPxmrgMf5TYDU+eFfjsvtF9ormN5J3banzViJj/as5o3RwHTWhQL8p8Hr1ym+si7mZ/ddrSqf/AEph/oA1pltueU3PyekvsJ/9qn+Ho/Z1atdWiqBDP4UgETl+AKVRT8ICNRm4vZBWyz3IaPeyanjH5lP04j6Ko6N0eXzIfmlrSuXxlEdUH48KmcDoBvF5l8JuGEWn/qa5T6i7PTVfEDTTrJhvXS1eNzkM3M68GsjfoGeJcfnH6Q+imuxbBua8ly+CWJytM3OO1t1En09ofIGNdCWboQtCDyuJAis25L2nWxIP/LDZ9eNWY3bkbhkSAqaZSgUiZSgBSAHcAcKNHcvEiPSg+jDRhCWS35QUOXSxy848ULtDyEDsh6R6xqwA4V4YKSmXKTLmzVqxmcl0UhQmbLviGHppdBCikEJlUMbMI49XdRQC6KKKAKKKKAKKKKABryiigCiiigCiiigPaKKKAKKKKAKKKKAKKKKA/9k=" alt="Logo"
         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22><rect fill=%22%23EDD4B8%22 width=%2260%22 height=%2260%22 rx=%2230%22/><text y=%22.9em%22 font-size=%2236%22 x=%2212%22>🧇</text></svg>'">
-      <div class="atitle">Balbadem</div>
-      <span class="abadge">Admin</span>
+      <div class="atitle">Balbadem</div><span class="abadge">Admin</span>
     </div>
     <div style="display:flex;gap:6px">
       <button class="btn-g" style="padding:5px 10px;font-size:11px" onclick="backToSite()">← Site</button>
       <button class="btn-g" style="padding:5px 10px;font-size:11px" onclick="doLogout()">Çıkış</button>
     </div>
   </div>
-
   <div class="atabs">
     <button class="atab on" onclick="atab('p',this)">🧇 Ürünler</button>
     <button class="atab" onclick="atab('pr',this)">🖼️ Profil</button>
     <button class="atab" onclick="atab('q',this)">📱 QR Kod</button>
   </div>
 
-  <!-- Products tab -->
+  <!-- Products -->
   <div class="abody" id="at-p">
     <div class="astats">
       <div class="astat"><div class="astat-n" id="as-t">0</div><div class="astat-l">Ürün</div></div>
@@ -456,30 +416,25 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
       <div class="astat"><div class="astat-n" id="as-a">₺0</div><div class="astat-l">Ort. Fiyat</div></div>
     </div>
     <div class="asec">
-      <div class="asec-h">
-        <div class="asec-t">Ürün Listesi</div>
-        <button class="btn-add" onclick="openPF()">+ Ekle</button>
-      </div>
+      <div class="asec-h"><div class="asec-t">Ürün Listesi</div><button class="btn-add" onclick="openPF()">+ Ekle</button></div>
       <div id="alist"></div>
     </div>
-
-    <!-- SAVE / CANCEL BAR -->
     <div class="save-bar" id="save-bar">
       <span class="save-bar-txt">⚠️ Kaydedilmemiş değişiklikler var</span>
       <div class="save-bar-btns">
         <button class="btn-cancel" onclick="cancelChanges()">✕ İptal</button>
-        <button class="btn-save" onclick="saveChanges()">💾 Kaydet</button>
+        <button class="btn-save" id="btn-save" onclick="saveChanges()">💾 Kaydet &amp; Yayınla</button>
       </div>
     </div>
   </div>
 
-  <!-- Profile tab -->
+  <!-- Profile -->
   <div class="abody hidden" id="at-pr">
     <div class="prof-sec">
       <div class="prof-t">🖼️ Profil Fotoğrafı</div>
       <div class="prof-row">
         <img class="prof-img" id="prof-prev" src="data:image/png;base64,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" alt="Mevcut">
-        <div class="prof-hint">Mevcut fotoğrafınız.<br>Yeni dosya seçin veya URL girin.<br><strong>Kaydet'e basınca güncellenir.</strong></div>
+        <div class="prof-hint">Mevcut fotoğrafınız.<br>Dosya seçin veya URL girin.<br><strong>Kaydet'e basınca güncellenir.</strong></div>
       </div>
       <div class="fg">
         <label class="fl">Dosyadan Yükle</label>
@@ -497,13 +452,13 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
     </div>
   </div>
 
-  <!-- QR tab -->
+  <!-- QR -->
   <div class="abody hidden" id="at-q">
     <div class="qrsec">
       <div class="qr-t">📱 QR Kod Oluştur</div>
-      <div class="qr-s">Sitenin URL'sini girin, QR kodunu indirin.</div>
+      <div class="qr-s">Sitenin URL'sini girin, QR kodunu indirin ve masaya koyun.</div>
       <div class="qr-url-r">
-        <input class="qr-inp" id="qr-url" placeholder="https://kullanici.github.io/balbadem-menu" value="https://kullanici.github.io/balbadem-menu">
+        <input class="qr-inp" id="qr-url" value="https://balbadem-menu.netlify.app">
         <button class="btn-gen" onclick="mkQR()">Oluştur</button>
       </div>
       <div id="qrbox"></div>
@@ -515,22 +470,19 @@ button,input,textarea,select{font-family:'Nunito',sans-serif;}
 <div class="toast" id="toast"><span id="t-i"></span><span id="t-m"></span></div>
 
 <script>
-/* ═══════════════════════════════════════
-   AUTH — SHA-256, credentials hidden
-═══════════════════════════════════════ */
-const _C = {
-  u: '9732b240e5f1f4178bfa2e365e38dd3a1085b998bddff82c788aad9407d2e99c',
-  h: 'd87cd6d0810b3115df80d22b4ae27b605cf2cb41bbd4a603bf4422bb0b1adc18'
-};
+/* ═══════════════════════════════════
+   CONFIG
+═══════════════════════════════════ */
+const _C = { u:'9732b240e5f1f4178bfa2e365e38dd3a1085b998bddff82c788aad9407d2e99c', h:'d87cd6d0810b3115df80d22b4ae27b605cf2cb41bbd4a603bf4422bb0b1adc18' };
+const SK = 'bb_v8';
+const PK = 'bb_p1';
+/* Bu token Netlify dashboard'da MENU_SAVE_TOKEN env var ile eşleşmeli */
+const SAVE_TOKEN = 'balbadem_netlify_2024';
 
-/* ═══════════════════════════════════════
-   CONSTANTS & DATA
-═══════════════════════════════════════ */
-const SK='bb_v7', PK='bb_p1';
-const CATS={hepsi:'Tüm',waffle:'Waffle',kumpir:'Kumpir',tatli:'Tatlı',icecek:'İçecek',ozel:'Özel'};
-const FB={waffle:'linear-gradient(135deg,#F4C89A,#D4622A)',kumpir:'linear-gradient(135deg,#C8E6C9,#5A8A5A)',tatli:'linear-gradient(135deg,#F8BBD0,#E91E63)',icecek:'linear-gradient(135deg,#B3E5FC,#0288D1)',ozel:'linear-gradient(135deg,#E1BEE7,#7B1FA2)'};
-const FE={waffle:'🧇',kumpir:'🥔',tatli:'🍫',icecek:'🥤',ozel:'✨'};
-const KW=[[/(çikolata)/i,'🍫'],[/(çilek)/i,'🍓'],[/(muz)/i,'🍌'],[/(kivi)/i,'🥝'],[/(fıstık|fındık)/i,'🥜'],[/(krema|şantı)/i,'🥛'],[/(meyve|orman)/i,'🍇'],[/(bal)/i,'🍯'],[/(tereyağ)/i,'🧈'],[/(dondurma)/i,'🍦'],[/(sos|şurup)/i,'🫙'],[/(vişne)/i,'🍒'],[/(kaşar|peynir)/i,'🧀'],[/(mısır)/i,'🌽'],[/(mantar)/i,'🍄'],[/(sucuk)/i,'🌭'],[/(zeytin)/i,'🫒'],[/(tarçın)/i,'🤎'],[/(marshmallow)/i,'☁️'],[/(patates)/i,'🥔']];
+const CATS = {hepsi:'Tüm',waffle:'Waffle',kumpir:'Kumpir',tatli:'Tatlı',icecek:'İçecek',ozel:'Özel'};
+const FB   = {waffle:'linear-gradient(135deg,#F4C89A,#D4622A)',kumpir:'linear-gradient(135deg,#C8E6C9,#5A8A5A)',tatli:'linear-gradient(135deg,#F8BBD0,#E91E63)',icecek:'linear-gradient(135deg,#B3E5FC,#0288D1)',ozel:'linear-gradient(135deg,#E1BEE7,#7B1FA2)'};
+const FE   = {waffle:'🧇',kumpir:'🥔',tatli:'🍫',icecek:'🥤',ozel:'✨'};
+const KW   = [[/(çikolata)/i,'🍫'],[/(çilek)/i,'🍓'],[/(muz)/i,'🍌'],[/(kivi)/i,'🥝'],[/(fıstık|fındık)/i,'🥜'],[/(krema|şantı)/i,'🥛'],[/(meyve|orman)/i,'🍇'],[/(bal)/i,'🍯'],[/(tereyağ)/i,'🧈'],[/(dondurma)/i,'🍦'],[/(sos|şurup)/i,'🫙'],[/(vişne)/i,'🍒'],[/(kaşar|peynir)/i,'🧀'],[/(mısır)/i,'🌽'],[/(mantar)/i,'🍄'],[/(sucuk)/i,'🌭'],[/(zeytin)/i,'🫒'],[/(tarçın)/i,'🤎'],[/(marshmallow)/i,'☁️'],[/(patates)/i,'🥔']];
 function aemoji(t){for(const[r,e]of KW)if(r.test(t))return e;return'✨';}
 
 const DEF=[
@@ -544,26 +496,71 @@ const DEF=[
   {id:8,name:'Waffle & Dondurma',price:175,cat:'tatli',desc:'Sıcak waffle, dondurma, çikolata sosu, krema',badge:'🆕 Yeni',featured:false,img:'https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=400&h=310&q=80'},
 ];
 
-/* ─── STATE ───
-  P         = published (localStorage'da olan, müşterinin gördüğü)
-  staging   = admin'in düzenlediği ama henüz kaydetmediği geçici kopya
-  hasChanges= save bar'ı göster/gizle için flag
-*/
+/* ═══════════════════════════════════
+   STATE
+═══════════════════════════════════ */
 let P=[], staging=[], NI=200, AC='hepsi', EI=null, hasChanges=false;
 
-/* ─── STORAGE ─── */
-function ldP(){
+/* ═══════════════════════════════════
+   NETLIFY BLOBS — server data
+═══════════════════════════════════ */
+function showBanner(txt){
+  const b=document.getElementById('sync-banner');
+  document.getElementById('sync-txt').textContent=txt;
+  b.classList.add('show');
+}
+function hideBanner(){document.getElementById('sync-banner').classList.remove('show');}
+
+async function loadFromServer(){
+  showBanner('Menü yükleniyor...');
+  try{
+    const r = await fetch('/api/get-menu', {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data = await r.json();
+    if(data && Array.isArray(data) && data.length > 0){
+      P = data;
+      NI = Math.max(200, ...P.map(p=>p.id)) + 1;
+      /* cache locally for offline fallback */
+      localStorage.setItem(SK, JSON.stringify({i:P, n:NI}));
+      hideBanner();
+      return true;
+    }
+  } catch(e){
+    console.warn('Server unavailable, using local data:', e.message);
+  }
+  /* fallback → localStorage or defaults */
+  ldLocal();
+  hideBanner();
+  return false;
+}
+
+async function saveToServer(products){
+  const r = await fetch('/api/save-menu', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({token: SAVE_TOKEN, products})
+  });
+  if(!r.ok){
+    const txt = await r.text();
+    throw new Error('Sunucu hatası: ' + txt);
+  }
+  return await r.json();
+}
+
+/* ═══════════════════════════════════
+   LOCAL STORAGE
+═══════════════════════════════════ */
+function ldLocal(){
   try{
     const s=localStorage.getItem(SK);
     if(s){const d=JSON.parse(s);P=d.i||DEF;NI=d.n||200;}
-    else{P=JSON.parse(JSON.stringify(DEF));}
+    else P=JSON.parse(JSON.stringify(DEF));
   }catch{P=JSON.parse(JSON.stringify(DEF));}
-  staging=JSON.parse(JSON.stringify(P)); // staging = P'nin kopyası
 }
 
-function svP(){
-  localStorage.setItem(SK,JSON.stringify({i:P,n:NI}));
-  localStorage.setItem('bb_v',Date.now());
+function svLocal(){
+  localStorage.setItem(SK, JSON.stringify({i:P, n:NI}));
+  localStorage.setItem('bb_v', Date.now());
 }
 
 function ldProf(){
@@ -571,7 +568,6 @@ function ldProf(){
   if(!s)return;
   ['hlogo','alogo','prof-prev'].forEach(id=>{const e=document.getElementById(id);if(e)e.src=s;});
 }
-
 function svProf(){
   const img=document.getElementById('prof-prev');
   if(!img||!img.src||img.src.includes('svg'))return toast('⚠️','Fotoğraf seçin');
@@ -579,30 +575,41 @@ function svProf(){
   ['hlogo','alogo'].forEach(id=>{const e=document.getElementById(id);if(e)e.src=img.src;});
   toast('✅','Profil güncellendi');
 }
-
 function onProfFile(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{document.getElementById('prof-prev').src=ev.target.result;};r.readAsDataURL(f);}
 function applyPU(){const u=document.getElementById('pu-inp').value.trim();if(!u)return toast('⚠️','URL girin');document.getElementById('prof-prev').src=u;toast('👀','Önizleme hazır');}
 
-/* ─── SAVE / CANCEL ─── */
+/* ═══════════════════════════════════
+   SAVE / CANCEL
+═══════════════════════════════════ */
 function markChanged(){
   hasChanges=true;
   document.getElementById('save-bar').classList.add('visible');
 }
 
-function saveChanges(){
-  // staging → P (yayınla)
-  P=JSON.parse(JSON.stringify(staging));
-  NI=Math.max(NI, ...P.map(p=>p.id), 200);
-  svP();
-  hasChanges=false;
-  document.getElementById('save-bar').classList.remove('visible');
-  renderAdmin();
-  render(); // anasayfayı da güncelle
-  toast('✅','Değişiklikler kaydedildi ve yayınlandı!');
+async function saveChanges(){
+  const btn=document.getElementById('btn-save');
+  btn.disabled=true;
+  btn.textContent='⏳ Kaydediliyor...';
+  try{
+    await saveToServer(staging);
+    P = JSON.parse(JSON.stringify(staging));
+    NI = Math.max(200,...P.map(p=>p.id))+1;
+    svLocal();
+    hasChanges=false;
+    document.getElementById('save-bar').classList.remove('visible');
+    renderAdmin();
+    render();
+    toast('✅','Kaydedildi! Tüm cihazlarda güncellendi 🎉');
+  }catch(e){
+    toast('⚠️','Kayıt başarısız: '+e.message);
+    console.error(e);
+  }finally{
+    btn.disabled=false;
+    btn.textContent='💾 Kaydet & Yayınla';
+  }
 }
 
 function cancelChanges(){
-  // staging'i P'ye geri döndür
   staging=JSON.parse(JSON.stringify(P));
   hasChanges=false;
   document.getElementById('save-bar').classList.remove('visible');
@@ -610,14 +617,15 @@ function cancelChanges(){
   toast('↩️','Değişiklikler iptal edildi');
 }
 
-/* ─── BULLETS ─── */
+/* ═══════════════════════════════════
+   RENDER
+═══════════════════════════════════ */
 function bullets(desc){
   if(!desc)return '';
   const parts=desc.split(/[,،]/).map(s=>s.trim()).filter(s=>s.length>1).slice(0,4);
   return '<ul class="pcard-blist">'+parts.map(p=>`<li><em class="b-em">${aemoji(p)}</em>${p}</li>`).join('')+'</ul>';
 }
 
-/* ─── RENDER MENU (uses P — published) ─── */
 function render(){
   ldProf();
   const fl=AC==='hepsi'?P:P.filter(p=>p.cat===AC);
@@ -630,27 +638,20 @@ function render(){
     document.getElementById('h-price').innerHTML='<sup>₺</sup>'+ft.price;
     if(ft.img){
       const hi=document.getElementById('h-img');
-      // Remove cache param to use fresh image, but force reload
-      hi.src='';
-      hi.src=ft.img;
-      hi.style.display='';
+      hi.src=''; hi.src=ft.img; hi.style.display='';
     }
   }
   const grid=document.getElementById('grid');
   if(!fl.length){grid.innerHTML='<div class="empty"><div class="empty-ico">🧇</div><div class="empty-txt">Bu kategoride ürün yok.</div></div>';return;}
   grid.innerHTML=fl.map((p,i)=>{
-    const fb=FB[p.cat]||FB.waffle;
-    const fe=FE[p.cat]||'🍽️';
-    // Fotoğraf için cache buster — timestamp ile tarayıcı önbelleğini atlatır
-    const imgSrc = p.img ? p.img : null;
+    const fb=FB[p.cat]||FB.waffle, fe=FE[p.cat]||'🍽️';
     return `<div class="pcard${p.featured?' feat':''}" style="animation-delay:${i*.05}s">
   <div class="pcard-img">
-    ${imgSrc
-      ?`<img src="${imgSrc}" alt="${p.name}" loading="lazy"
+    ${p.img
+      ?`<img src="${p.img}" alt="${p.name}" loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="pcard-img-ph" style="background:${fb};display:none">${fe}</div>`
-      :`<div class="pcard-img-ph" style="background:${fb}">${fe}</div>`
-    }
+      :`<div class="pcard-img-ph" style="background:${fb}">${fe}</div>`}
     ${p.badge?`<div class="pcard-badge">${p.badge}</div>`:''}
     ${p.featured?`<div class="pcard-star">⭐</div>`:''}
   </div>
@@ -668,24 +669,17 @@ function render(){
 
 function fcat(c,el){AC=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on'));el.classList.add('on');render();}
 
-/* ─── OPEN/CLOSED STATUS ─── */
+/* ═══════════════════════════════════
+   STATUS / PAGES
+═══════════════════════════════════ */
 function updateStatus(){
-  const now=new Date();
-  const day=now.getDay(); // 0=Sun,6=Sat
-  const h=now.getHours(),m=now.getMinutes();
-  const t=h*60+m;
-  // Hafta içi 10:00-22:00, hafta sonu 10:00-23:00
-  const open=10*60, closeWeek=22*60, closeWknd=23*60;
-  const isWknd=(day===0||day===6);
-  const closeTime=isWknd?closeWknd:closeWeek;
-  const isOpen=(t>=open&&t<closeTime);
-  const badge=document.getElementById('status-badge');
-  const txt=document.getElementById('status-txt');
-  if(isOpen){badge.className='tb-open open';txt.textContent='Açık';}
-  else{badge.className='tb-open closed';txt.textContent='Kapalı';}
+  const now=new Date(), day=now.getDay(), t=now.getHours()*60+now.getMinutes();
+  const isOpen=(t>=600&&t<(day===0||day===6?1380:1320));
+  const b=document.getElementById('status-badge');
+  b.className='tb-open '+(isOpen?'open':'closed');
+  document.getElementById('status-txt').textContent=isOpen?'Açık':'Kapalı';
 }
 
-/* ─── PAGES ─── */
 function gpage(n,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.getElementById('p-'+n).classList.add('on');
@@ -694,7 +688,9 @@ function gpage(n,btn){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ─── AUTH ─── */
+/* ═══════════════════════════════════
+   AUTH
+═══════════════════════════════════ */
 function openLogin(){document.getElementById('ov-lg').classList.add('open');document.getElementById('lu').value='';document.getElementById('lp').value='';document.getElementById('lerr').style.display='none';setTimeout(()=>document.getElementById('lu').focus(),120);}
 function closeLogin(){document.getElementById('ov-lg').classList.remove('open');}
 async function doLogin(){
@@ -706,7 +702,6 @@ async function doLogin(){
     closeLogin();
     document.getElementById('shell').style.display='none';
     document.getElementById('admin').style.display='block';
-    // Staging = güncel P kopyası
     staging=JSON.parse(JSON.stringify(P));
     hasChanges=false;
     document.getElementById('save-bar').classList.remove('visible');
@@ -716,22 +711,23 @@ async function doLogin(){
 }
 document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 function doLogout(){
-  if(hasChanges&&!confirm('Kaydedilmemiş değişiklikler var. Çıkmak istediğinize emin misiniz?'))return;
-  staging=JSON.parse(JSON.stringify(P));
-  hasChanges=false;
+  if(hasChanges&&!confirm('Kaydedilmemiş değişiklikler var. Çıkmak istiyor musunuz?'))return;
+  staging=JSON.parse(JSON.stringify(P)); hasChanges=false;
   document.getElementById('save-bar').classList.remove('visible');
   document.getElementById('admin').style.display='none';
   document.getElementById('shell').style.display='';
   render();
 }
 function backToSite(){
-  if(hasChanges&&!confirm('Kaydedilmemiş değişiklikler var. Siteye dönmek istediğinize emin misiniz?'))return;
+  if(hasChanges&&!confirm('Kaydedilmemiş değişiklikler var. Siteye dönmek istiyor musunuz?'))return;
   document.getElementById('admin').style.display='none';
   document.getElementById('shell').style.display='';
   render();
 }
 
-/* ─── ADMIN TABS ─── */
+/* ═══════════════════════════════════
+   ADMIN
+═══════════════════════════════════ */
 function atab(n,el){
   document.querySelectorAll('.atab').forEach(t=>t.classList.remove('on'));
   if(el)el.classList.add('on');
@@ -739,52 +735,37 @@ function atab(n,el){
   document.getElementById('at-'+n)?.classList.remove('hidden');
 }
 
-/* ─── ADMIN RENDER (uses staging) ─── */
 function renderAdmin(){
   document.getElementById('as-t').textContent=staging.length;
   document.getElementById('as-c').textContent=new Set(staging.map(p=>p.cat)).size;
   const avg=staging.length?Math.round(staging.reduce((a,p)=>a+p.price,0)/staging.length):0;
   document.getElementById('as-a').textContent='₺'+avg;
-
   const list=document.getElementById('alist');
   if(!staging.length){list.innerHTML='<div class="empty"><div class="empty-ico">🧇</div><div class="empty-txt">Henüz ürün yok.</div></div>';return;}
-
   list.innerHTML=staging.map((p,idx)=>`
-    <div class="aitem" draggable="true" data-id="${p.id}" data-idx="${idx}"
+    <div class="aitem" draggable="true" data-idx="${idx}"
          ondragstart="dStart(event,${idx})" ondragover="dOver(event)" ondrop="dDrop(event,${idx})" ondragend="dEnd()">
-      <span class="aitem-drag" title="Sürükle">⠿</span>
+      <span class="aitem-drag">⠿</span>
       <div class="aitem-img">${p.img?`<img src="${p.img}" alt="${p.name}" onerror="this.parentElement.textContent='${FE[p.cat]||'🍽️'}'">`:FE[p.cat]||'🍽️'}</div>
-      <div style="flex:1;min-width:0">
-        <div class="aitem-n">${p.name}${p.featured?' ⭐':''}</div>
-        <div class="aitem-s">${CATS[p.cat]||p.cat}${p.badge?' · '+p.badge:''}</div>
-      </div>
+      <div style="flex:1;min-width:0"><div class="aitem-n">${p.name}${p.featured?' ⭐':''}</div><div class="aitem-s">${CATS[p.cat]||p.cat}${p.badge?' · '+p.badge:''}</div></div>
       <div class="aitem-p">₺${p.price}</div>
       <div class="aacts">
         <button class="ibtn e" onclick="openPF(${p.id})">✏️</button>
-        <button class="ibtn d" onclick="delPStaging(${p.id})">🗑</button>
+        <button class="ibtn d" onclick="delStaging(${p.id})">🗑</button>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-/* ─── DRAG & DROP REORDER ─── */
+/* drag & drop */
 let dragIdx=null;
-function dStart(e,idx){dragIdx=idx;e.currentTarget.classList.add('dragging');e.dataTransfer.effectAllowed='move';}
-function dOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';document.querySelectorAll('.aitem').forEach(el=>el.classList.remove('drag-over'));e.currentTarget.classList.add('drag-over');}
-function dDrop(e,toIdx){
-  e.preventDefault();
-  if(dragIdx===null||dragIdx===toIdx)return;
-  const item=staging.splice(dragIdx,1)[0];
-  staging.splice(toIdx,0,item);
-  markChanged();
-  renderAdmin();
-}
+function dStart(e,i){dragIdx=i;e.currentTarget.classList.add('dragging');e.dataTransfer.effectAllowed='move';}
+function dOver(e){e.preventDefault();document.querySelectorAll('.aitem').forEach(el=>el.classList.remove('drag-over'));e.currentTarget.classList.add('drag-over');}
+function dDrop(e,to){e.preventDefault();if(dragIdx===null||dragIdx===to)return;const item=staging.splice(dragIdx,1)[0];staging.splice(to,0,item);markChanged();renderAdmin();}
 function dEnd(){document.querySelectorAll('.aitem').forEach(el=>{el.classList.remove('dragging');el.classList.remove('drag-over');});dragIdx=null;}
 
-/* ─── PRODUCT FORM (edits staging, not P) ─── */
+/* product form */
 function openPF(id){
-  EI=id||null;
-  document.getElementById('ov-pf').classList.add('open');
+  EI=id||null;document.getElementById('ov-pf').classList.add('open');
   const p=id?staging.find(x=>x.id===id):null;
   document.getElementById('pft').textContent=p?'Ürünü Düzenle':'Yeni Ürün';
   document.getElementById('pf-n').value=p?.name||'';
@@ -797,8 +778,6 @@ function openPF(id){
   if(p?.img)showPv(p.img);else rstPv();
 }
 function closePF(){document.getElementById('ov-pf').classList.remove('open');EI=null;}
-
-// "Listeye Ekle" — staging'e ekle/güncelle, save bar göster
 function addToStaging(){
   const name=document.getElementById('pf-n').value.trim();
   const price=Number(document.getElementById('pf-p').value);
@@ -806,40 +785,32 @@ function addToStaging(){
   if(!price||price<=0)return toast('⚠️','Geçerli fiyat girin');
   const ps=document.getElementById('img-pv').src;
   const iu=document.getElementById('pf-img').value.trim();
-  // Fotoğraf: URL alanı öncelikli, sonra dosya önizleme
-  const img=iu||(ps&&!ps.includes('svg')&&!ps.includes('data:image/svg')?ps:'');
-  const entry={
-    id:EI||++NI,
-    name,price,img,
+  const img=iu||(ps&&!ps.includes('svg')?ps:'');
+  const entry={id:EI||++NI,name,price,img,
     desc:document.getElementById('pf-d').value.trim(),
     cat:document.getElementById('pf-c').value,
     badge:document.getElementById('pf-b').value.trim(),
-    featured:document.getElementById('pf-feat').value==='true'
-  };
+    featured:document.getElementById('pf-feat').value==='true'};
   if(EI){const i=staging.findIndex(p=>p.id===EI);if(i!==-1)staging[i]=entry;}
   else staging.push(entry);
-  markChanged();
-  closePF();
-  renderAdmin();
-  toast('📋',EI?'Güncellendi — kaydetmeyi unutmayın!':'Listeye eklendi — kaydetmeyi unutmayın!');
+  markChanged(); closePF(); renderAdmin();
+  toast('📋',EI?'Güncellendi — Kaydet'e basın':'Eklendi — Kaydet'e basın');
 }
-
-function delPStaging(id){
-  if(!confirm('Bu ürünü listeden kaldırmak istediğinize emin misiniz?'))return;
+function delStaging(id){
+  if(!confirm('Silmek istediğinize emin misiniz?'))return;
   staging=staging.filter(p=>p.id!==id);
-  markChanged();
-  renderAdmin();
-  toast('🗑','Silindi — kaydetmeyi unutmayın');
+  markChanged(); renderAdmin(); toast('🗑','Silindi — Kaydet'e basın');
 }
-
 function onImgFile(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{showPv(ev.target.result);document.getElementById('pf-img').value=ev.target.result;};r.readAsDataURL(f);}
-function onImgUrl(u){if(u){showPv(u);}else{rstPv();}}
+function onImgUrl(u){u?showPv(u):rstPv();}
 function showPv(s){document.getElementById('img-pv').src=s;document.getElementById('img-pv').style.display='block';document.getElementById('img-ph').style.display='none';}
 function rstPv(){document.getElementById('img-pv').src='';document.getElementById('img-pv').style.display='none';document.getElementById('img-ph').style.display='block';}
 function togFeat(){setFeatUI(document.getElementById('pf-feat').value!=='true');}
 function setFeatUI(v){document.getElementById('pf-feat').value=v?'true':'false';document.getElementById('pf-tog').classList.toggle('on',v);document.getElementById('pf-tl').textContent=v?'Evet ⭐':'Hayır';}
 
-/* ─── QR ─── */
+/* ═══════════════════════════════════
+   QR CODE (pure JS, no CDN)
+═══════════════════════════════════ */
 /* ─── QR CODE ─── */
 var _qrCanvas = null;
 var _qrUrl    = '';
@@ -1078,19 +1049,28 @@ function qrGenerate(text) {
   return m;
 }
 
-/* ─── TOAST ─── */
-function toast(ico,msg){const t=document.getElementById('toast');document.getElementById('t-i').textContent=ico;document.getElementById('t-m').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3000);}
+/* ═══════════════════════════════════
+   TOAST
+═══════════════════════════════════ */
+function toast(ico,msg){const t=document.getElementById('toast');document.getElementById('t-i').textContent=ico;document.getElementById('t-m').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3200);}
 
-/* ─── INIT ─── */
-(function(){
-  ldP();
-  ldProf();
+/* ═══════════════════════════════════
+   INIT
+═══════════════════════════════════ */
+(async function(){
   updateStatus();
-  setInterval(updateStatus,60000); // her dakika kontrol
+  setInterval(updateStatus, 60000);
+  ldProf();
+  /* 1. Try server first */
+  await loadFromServer();
+  /* 2. Init staging from P */
+  staging = JSON.parse(JSON.stringify(P));
+  /* 3. Render */
   render();
-  window.addEventListener('storage',e=>{
-    if(e.key===SK){ldP();render();}
-    if(e.key===PK){ldProf();}
+  /* 4. Listen for storage changes (same browser, other tabs) */
+  window.addEventListener('storage', e=>{
+    if(e.key===SK){ ldLocal(); render(); }
+    if(e.key===PK){ ldProf(); }
   });
 })();
 </script>

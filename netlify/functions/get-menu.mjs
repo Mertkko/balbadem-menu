@@ -1,22 +1,39 @@
 import { getStore } from "@netlify/blobs";
 
 export default async (req, context) => {
-  const store = getStore({
-    name: "menu",
-    siteID: context.site.id,
-    token: Netlify.env.get("NETLIFY_BLOBS_TOKEN")
-  });
+  /* CORS preflight */
+  if (req.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Access-Control-Allow-Origin":  "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    });
+  }
 
   try {
-    const data = await store.get("products");
+    const store = getStore("menu");
+    const data  = await store.get("products");
+
     return new Response(data || "null", {
+      status: 200,
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      }
+        "Content-Type":                "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control":               "no-cache, no-store, must-revalidate",
+      },
     });
-  } catch(e) {
-    return new Response("null", { status: 200 });
+  } catch (e) {
+    console.error("get-menu error:", e);
+    return new Response("null", {
+      status: 200,
+      headers: {
+        "Content-Type":                "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   }
 };
 
